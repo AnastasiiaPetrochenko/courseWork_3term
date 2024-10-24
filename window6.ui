@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Window6</class>
+ <widget class="QDialog" name="Window6">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>300</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">
+background-color: rgb(255, 249, 166);</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QLabel" name="label">
+     <property name="styleSheet">
+      <string notr="true">font: 700 12pt &quot;Consolas&quot;;
+color: rgb(0, 22, 74);
+background-color: rgb(170, 152, 49);</string>
+     </property>
+     <property name="text">
+      <string>Таблиця результатів</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QTableWidget" name="tableWidget">
+     <property name="styleSheet">
+      <string notr="true">font: 700 12pt &quot;Consolas&quot;;
+color: rgb(0, 22, 74);
+background-color: rgb(170, 152, 49);</string>
+     </property>
+     <column>
+      <property name="text">
+       <string>Новий стовпчик</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Ім'я</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Подарунок</string>
+      </property>
+     </column>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="pushButton">
+     <property name="styleSheet">
+      <string notr="true">font: 700 12pt &quot;Consolas&quot;;
+color: rgb(0, 22, 74);
+background-color: rgb(170, 152, 49);</string>
+     </property>
+     <property name="text">
+      <string>Визначити</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

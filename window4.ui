@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Window4</class>
+ <widget class="QDialog" name="Window4">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>431</width>
+    <height>349</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">font: 700 18pt &quot;Consolas&quot;;
+color: rgb(0, 22, 74);
+
+background-color: rgb(255, 249, 166);</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_4">
+   <item>
+    <layout class="QVBoxLayout" name="verticalLayout_3">
+     <item>
+      <widget class="QFrame" name="frame">
+       <property name="styleSheet">
+        <string notr="true">border-color: rgb(255, 0, 102);</string>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+       <widget class="QLabel" name="label">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>30</y>
+          <width>407</width>
+          <height>88</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: 16pt &quot;Consolas&quot;;
+font: 700 16pt &quot;Consolas&quot;;
+color: rgb(0, 0, 0);</string>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;ПРО ПРОГРАМУ&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_2">
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 0);
+font: 700 italic 12pt &quot;Consolas&quot;;
+background-color: rgb(170, 152, 49);</string>
+       </property>
+       <property name="text">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Це програма для організації&lt;/p&gt;&lt;p align=&quot;center&quot;&gt; свята Миколая.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton">
+       <property name="styleSheet">
+        <string notr="true">color: rgb(170, 0, 0);
+background-color: rgb(170, 152, 49);
+font: 700 14pt &quot;Consolas&quot;;</string>
+       </property>
+       <property name="text">
+        <string>Закрити</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
