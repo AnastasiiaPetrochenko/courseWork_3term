@@ -2,7 +2,7 @@
 #define WINDOW6_H
 
 #include <QDialog>
-
+#include "messageManager.h"
 namespace Ui {
 class Window6;
 }
@@ -16,7 +16,7 @@ public:
     ~Window6();
 
 private slots:
-    void on_pushButton_clicked();
+    void on_pushButton_clicked(const QVector<Child*>& youngestChildren);
 
 private:
     Ui::Window6 *ui;

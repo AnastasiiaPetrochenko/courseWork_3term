@@ -8,6 +8,7 @@
 #include "window3.h"         // Включаємо Window3
 #include "window4.h"         // Включаємо Window3
 #include "window5.h"
+#include "window6.h"
 
 
 
@@ -45,6 +46,8 @@ private slots:
 
     void on_pushButton_clicked();
 
+    void on_action_triggered();
+
 private:
     Ui::MainWindow *ui;         // Інтерфейс головного вікна
     MessageManager messageManager; // Об'єкт MessageManager для управління повідомленнями
@@ -52,6 +55,7 @@ private:
     Window3 *window3;           // Вказівник на вікно Window3
     Window4 *window4;
     Window5 *window5;
+    Window6 *window6;
 
 };
 

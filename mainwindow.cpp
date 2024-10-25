@@ -8,6 +8,7 @@
 #include "window3.h"
 #include "window4.h"
 #include "window5.h"
+#include "window6.h"
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -17,6 +18,7 @@ MainWindow::MainWindow(QWidget *parent)
     , window3(nullptr)
     , window4(nullptr)
     , window5(nullptr)
+    , window6(nullptr)
 {
     ui->setupUi(this);
 
@@ -218,5 +220,14 @@ void MainWindow::on_action_4_triggered() {
 void MainWindow::on_pushButton_clicked()
 {
      loadChildrenFromFile();  // Виклик функції при натисканні кнопки
+}
+
+
+void MainWindow::on_action_triggered()
+{
+    if(!window6){
+        window6=new Window6(this);
+    }
+    window6->show();
 }
 

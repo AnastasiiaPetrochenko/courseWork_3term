@@ -130,22 +130,41 @@ int MessageManager::countGiftType(Child::GiftType giftType) const {
 }
 
 
-QVector<Child*> MessageManager::findYoungestChildren() const {
-    QVector<Child*> youngest;
+QVector<Child*> MessageManager::findYoungestChildrenFromTable(QTableWidget* table) const {
+    QVector<Child*> youngestChildren;
     int minAge = std::numeric_limits<int>::max();
 
-    for (Child* child : messages) {
-        if (child->getAge() < minAge) {
-            minAge = child->getAge();
-            youngest.clear();
-            youngest.push_back(child);
-        } else if (child->getAge() == minAge) {
-            youngest.push_back(child);
+    for (int row = 0; row < table->rowCount(); ++row) {
+        int age = table->item(row, 1)->text().toInt(); // Колонка з віком
+
+        // Знаходимо наймолодших
+        if (age < minAge) {
+            minAge = age;
+            youngestChildren.clear();
+            youngestChildren.push_back(new Child(
+                table->item(row, 0)->text(),      // Ім'я
+                age,                              // Вік
+                table->item(row, 2)->text() == "Хлопець" ? Child::Gender::Male : Child::Gender::Female,
+                table->item(row, 3)->text().toInt(), // Хороші вчинки
+                table->item(row, 4)->text().toInt(), // Погані вчинки
+                table->item(row, 5)->text() == "Їстівний" ? Child::GiftType::Edible : Child::GiftType::NonEdible,
+                table->item(row, 6)->text()           // Конкретний подарунок
+                ));
+        } else if (age == minAge) {
+            youngestChildren.push_back(new Child(
+                table->item(row, 0)->text(), age,
+                table->item(row, 2)->text() == "Хлопець" ? Child::Gender::Male : Child::Gender::Female,
+                table->item(row, 3)->text().toInt(),
+                table->item(row, 4)->text().toInt(),
+                table->item(row, 5)->text() == "Їстівний" ? Child::GiftType::Edible : Child::GiftType::NonEdible,
+                table->item(row, 6)->text()
+                ));
         }
     }
 
-    return youngest;
+    return youngestChildren;
 }
+
 
 Child* MessageManager::findLastMessage(const QString& childName) const {
     Child* lastMessage = nullptr;

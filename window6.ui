@@ -31,7 +31,7 @@ background-color: rgb(170, 152, 49);</string>
     </widget>
    </item>
    <item>
-    <widget class="QTableWidget" name="tableWidget">
+    <widget class="QTableWidget" name="youngestChildrenTable">
      <property name="styleSheet">
       <string notr="true">font: 700 12pt &quot;Consolas&quot;;
 color: rgb(0, 22, 74);
@@ -39,12 +39,12 @@ background-color: rgb(170, 152, 49);</string>
      </property>
      <column>
       <property name="text">
-       <string>Новий стовпчик</string>
+       <string>Ім'я</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>Ім'я</string>
+       <string>Вік</string>
       </property>
      </column>
      <column>
