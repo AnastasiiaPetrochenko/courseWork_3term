@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Додати повідомлення</string>
   </property>
   <property name="styleSheet">
    <string notr="true">background-color: rgb(186, 178, 137);
@@ -22,26 +22,14 @@ background-color: rgb(255, 249, 166);</string>
    <item>
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
-      <widget class="QLabel" name="label_7">
-       <property name="styleSheet">
-        <string notr="true">font: 700 11pt &quot;Segoe UI&quot;;
-background-color: rgb(239, 255, 213);
-color: rgb(0, 0, 0);
-font: 700 10pt &quot;Segoe UI&quot;;
-font: 700 14pt &quot;Segoe UI&quot;;</string>
-       </property>
-       <property name="text">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Додати повідомлення&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-       </property>
-      </widget>
-     </item>
-     <item>
       <layout class="QHBoxLayout" name="horizontalLayout">
        <item>
         <widget class="QLabel" name="label_2">
          <property name="styleSheet">
           <string notr="true">font: 700 14pt &quot;Consolas&quot;;
-color: rgb(0, 0, 0);</string>
+color: rgb(0, 85, 0);
+
+</string>
          </property>
          <property name="text">
           <string>Ім'я:</string>
@@ -51,7 +39,8 @@ color: rgb(0, 0, 0);</string>
        <item>
         <widget class="QLineEdit" name="lineEdit">
          <property name="styleSheet">
-          <string notr="true">background-color: rgb(170, 152, 49);</string>
+          <string notr="true">background-color: rgb(135, 255, 126);
+</string>
          </property>
         </widget>
        </item>
@@ -62,8 +51,8 @@ color: rgb(0, 0, 0);</string>
        <item>
         <widget class="QLabel" name="label">
          <property name="styleSheet">
-          <string notr="true">font: 700 14pt &quot;Consolas&quot;;
-color: rgb(0, 0, 0);</string>
+          <string notr="true">font: 700 14pt &quot;Consolas&quot;;color: rgb(0, 85, 0);
+</string>
          </property>
          <property name="text">
           <string>Вік:</string>
@@ -75,7 +64,7 @@ color: rgb(0, 0, 0);</string>
          <property name="styleSheet">
           <string notr="true">font: 700 9pt &quot;Consolas&quot;;
 color: rgb(0, 22, 74);
-background-color: rgb(170, 152, 49);</string>
+background-color: rgb(135, 255, 126);</string>
          </property>
         </widget>
        </item>
@@ -87,7 +76,8 @@ background-color: rgb(170, 152, 49);</string>
         <widget class="QLabel" name="label_3">
          <property name="styleSheet">
           <string notr="true">font: 700 14pt &quot;Consolas&quot;;
-color: rgb(0, 0, 0);</string>
+color: rgb(0, 85, 0);
+</string>
          </property>
          <property name="text">
           <string>Стать:</string>
@@ -98,8 +88,8 @@ color: rgb(0, 0, 0);</string>
         <widget class="QComboBox" name="comboBox_2">
          <property name="styleSheet">
           <string notr="true">font: 700 9pt &quot;Consolas&quot;;
-color: rgb(0, 22, 74);
-background-color: rgb(170, 152, 49);</string>
+color: rgb(0, 85, 0);
+background-color: rgb(135, 255, 126);</string>
          </property>
          <item>
           <property name="text">
@@ -121,7 +111,8 @@ background-color: rgb(170, 152, 49);</string>
         <widget class="QLabel" name="label_5">
          <property name="styleSheet">
           <string notr="true">font: 700 14pt &quot;Consolas&quot;;
-color: rgb(0, 0, 0);</string>
+color: rgb(0, 85, 0);
+</string>
          </property>
          <property name="text">
           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Кількість&lt;/p&gt;&lt;p align=&quot;center&quot;&gt; хороших вчинків:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -131,8 +122,7 @@ color: rgb(0, 0, 0);</string>
        <item>
         <widget class="QSpinBox" name="spinBox_2">
          <property name="styleSheet">
-          <string notr="true">background-color: rgb(170, 152, 49);
-</string>
+          <string notr="true">background-color: rgb(135, 255, 126);</string>
          </property>
         </widget>
        </item>
@@ -144,7 +134,8 @@ color: rgb(0, 0, 0);</string>
         <widget class="QLabel" name="label_4">
          <property name="styleSheet">
           <string notr="true">font: 700 14pt &quot;Consolas&quot;;
-color: rgb(0, 0, 0);</string>
+color: rgb(0, 85, 0);
+</string>
          </property>
          <property name="text">
           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Кількість &lt;/p&gt;&lt;p align=&quot;center&quot;&gt;поганих вчинків&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -154,30 +145,19 @@ color: rgb(0, 0, 0);</string>
        <item>
         <widget class="QSpinBox" name="spinBox_3">
          <property name="styleSheet">
-          <string notr="true">background-color: rgb(170, 152, 49);</string>
+          <string notr="true">background-color: rgb(135, 255, 126);</string>
          </property>
         </widget>
        </item>
       </layout>
      </item>
      <item>
-      <widget class="QLabel" name="label_6">
-       <property name="styleSheet">
-        <string notr="true">font: 700 14pt &quot;Consolas&quot;;
-color: rgb(0, 22, 74);
-background-color: rgb(170, 152, 49);</string>
-       </property>
-       <property name="text">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Тип подарунку:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-       </property>
-      </widget>
-     </item>
-     <item>
       <widget class="QComboBox" name="comboBox">
        <property name="styleSheet">
         <string notr="true">font: 700 9pt &quot;Consolas&quot;;
-color: rgb(0, 22, 74);
-background-color: rgb(170, 152, 49);</string>
+color: rgb(0, 85, 0);
+
+background-color: rgb(135, 255, 126);</string>
        </property>
        <item>
         <property name="text">
@@ -195,8 +175,9 @@ background-color: rgb(170, 152, 49);</string>
       <widget class="QComboBox" name="comboBox_3">
        <property name="styleSheet">
         <string notr="true">font: 700 9pt &quot;Consolas&quot;;
-color: rgb(0, 22, 74);
-background-color: rgb(170, 152, 49);</string>
+color: rgb(0, 85, 0);
+
+background-color: rgb(135, 255, 126);</string>
        </property>
        <item>
         <property name="text">
@@ -218,7 +199,9 @@ background-color: rgb(170, 152, 49);</string>
      <item>
       <widget class="QPushButton" name="pushButton">
        <property name="styleSheet">
-        <string notr="true">background-color: rgb(85, 85, 0);</string>
+        <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(115, 0, 2);
+font: 15pt &quot;Consolas&quot;;</string>
        </property>
        <property name="text">
         <string>Відправити</string>

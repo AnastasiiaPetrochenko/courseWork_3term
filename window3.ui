@@ -6,80 +6,101 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>272</width>
-    <height>208</height>
+    <width>262</width>
+    <height>232</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Видалення дитини</string>
   </property>
   <property name="styleSheet">
    <string notr="true">background-color: rgb(255, 230, 106);
 </string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout_2">
-   <item>
-    <layout class="QVBoxLayout" name="verticalLayout">
-     <item>
-      <widget class="QLabel" name="label">
-       <property name="styleSheet">
-        <string notr="true">background-color: rgb(255, 11, 27);
-background-color: rgb(255, 255, 255);
-border-color: rgb(255, 0, 0);
+  <widget class="QWidget" name="verticalLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>60</y>
+     <width>241</width>
+     <height>161</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QLineEdit" name="lineEdit">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(135, 255, 126);</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="pushButton">
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(115, 0, 2);
+font: 15pt &quot;Consolas&quot;;</string>
+      </property>
+      <property name="text">
+       <string>Видалити</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="pushButton_2">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(0, 85, 0);
+color: rgb(255, 255, 255);
+font: 15pt &quot;Consolas&quot;;
+
+</string>
+      </property>
+      <property name="text">
+       <string>Скасувати</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>20</y>
+     <width>241</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 15pt &quot;Consolas&quot;;
+font: 12pt &quot;Segoe UI&quot;;
+color: rgb(0, 85, 0);
+font: 700 9pt &quot;Consolas&quot;;
+font: 12pt &quot;Segoe UI&quot;;
+font: 700 12pt &quot;Segoe UI&quot;;</string>
+   </property>
+   <property name="text">
+    <string>Введіть ім'я дитини:</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>473</x>
+     <y>61</y>
+     <width>55</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-color: rgb(0, 0, 0);
 color: rgb(0, 0, 0);
 font: 700 12pt &quot;Consolas&quot;;</string>
-       </property>
-       <property name="text">
-        <string>ВИДАЛИТИ ПОВІДОМЛЕННЯ</string>
-       </property>
-      </widget>
-     </item>
-     <item alignment="Qt::AlignHCenter">
-      <widget class="QLabel" name="label_2">
-       <property name="styleSheet">
-        <string notr="true">border-color: rgb(0, 0, 0);
-color: rgb(0, 0, 0);
-font: 700 12pt &quot;Consolas&quot;;</string>
-       </property>
-       <property name="text">
-        <string>Ім'я:</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLineEdit" name="lineEdit">
-       <property name="styleSheet">
-        <string notr="true">background-color: rgb(255, 255, 255);</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="pushButton_2">
-       <property name="styleSheet">
-        <string notr="true">background-color: rgb(0, 85, 0);
-color: rgb(0, 0, 0);
-font: 700 9pt &quot;Segoe UI&quot;;</string>
-       </property>
-       <property name="text">
-        <string>Скасувати</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="pushButton">
-       <property name="styleSheet">
-        <string notr="true">background-color: rgb(255, 0, 0);
-color: rgb(0, 0, 0);
-font: 700 9pt &quot;Segoe UI&quot;;</string>
-       </property>
-       <property name="text">
-        <string>Видалити</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
-  </layout>
+   </property>
+   <property name="text">
+    <string>Ім'я:</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>

@@ -36,6 +36,16 @@ QVector<Child*> MessageManager::getUniqueMessages() const {
     return uniqueMessages;
 }
 
+int MessageManager::countSwitch() const {
+    int count = 0;
+    for (Child* child : messages) {
+        if (child->getSpecificGift() == "Різочка") {
+            count++;
+        }
+    }
+    return count;
+}
+
 
 int MessageManager::countCandy() const {
     int count = 0;
@@ -130,40 +140,60 @@ int MessageManager::countGiftType(Child::GiftType giftType) const {
 }
 
 
-QVector<Child*> MessageManager::findYoungestChildrenFromTable(QTableWidget* table) const {
-    QVector<Child*> youngestChildren;
-    int minAge = std::numeric_limits<int>::max();
+QVector<Child*> MessageManager::findYoungestChildrenFromTable(QTableWidget* table) {
+    QVector<Child*> childrenList;
 
+    if (!table || table->rowCount() == 0) {
+        return childrenList;
+    }
+
+    // Збираємо всіх дітей з таблиці
     for (int row = 0; row < table->rowCount(); ++row) {
-        int age = table->item(row, 1)->text().toInt(); // Колонка з віком
+        QString name = table->item(row, 0)->text();
+        int age = table->item(row, 1)->text().toInt();
+        QString genderStr = table->item(row, 2)->text();
+        int goodDeeds = table->item(row, 3)->text().toInt();
+        int badDeeds = table->item(row, 4)->text().toInt();
+        QString giftTypeStr = table->item(row, 5)->text();
+        QString specificGift = table->item(row, 6)->text();
 
-        // Знаходимо наймолодших
-        if (age < minAge) {
-            minAge = age;
-            youngestChildren.clear();
-            youngestChildren.push_back(new Child(
-                table->item(row, 0)->text(),      // Ім'я
-                age,                              // Вік
-                table->item(row, 2)->text() == "Хлопець" ? Child::Gender::Male : Child::Gender::Female,
-                table->item(row, 3)->text().toInt(), // Хороші вчинки
-                table->item(row, 4)->text().toInt(), // Погані вчинки
-                table->item(row, 5)->text() == "Їстівний" ? Child::GiftType::Edible : Child::GiftType::NonEdible,
-                table->item(row, 6)->text()           // Конкретний подарунок
-                ));
-        } else if (age == minAge) {
-            youngestChildren.push_back(new Child(
-                table->item(row, 0)->text(), age,
-                table->item(row, 2)->text() == "Хлопець" ? Child::Gender::Male : Child::Gender::Female,
-                table->item(row, 3)->text().toInt(),
-                table->item(row, 4)->text().toInt(),
-                table->item(row, 5)->text() == "Їстівний" ? Child::GiftType::Edible : Child::GiftType::NonEdible,
-                table->item(row, 6)->text()
-                ));
+        Child::Gender gender = (genderStr == "Хлопець") ? Child::Gender::Male : Child::Gender::Female;
+        Child::GiftType giftType = (giftTypeStr == "Їстівний") ? Child::GiftType::Edible : Child::GiftType::NonEdible;
+
+        Child* child = new Child(name, age, gender, goodDeeds, badDeeds, giftType, specificGift);
+        childrenList.append(child);
+    }
+
+    // Знаходимо найменший вік
+    if (childrenList.isEmpty()) {
+        return {};
+    }
+
+    int youngestAge = childrenList[0]->getAge();
+    for (Child* child : childrenList) {
+        if (child->getAge() < youngestAge) {
+            youngestAge = child->getAge();
+        }
+    }
+
+    // Вибираємо всіх дітей з найменшим віком
+    QVector<Child*> youngestChildren;
+    for (Child* child : childrenList) {
+        if (child->getAge() == youngestAge) {
+            youngestChildren.append(child);
+        }
+    }
+
+    // Видаляємо зайві об'єкти з пам'яті
+    for (Child* child : childrenList) {
+        if (child->getAge() != youngestAge) {
+            delete child;
         }
     }
 
     return youngestChildren;
 }
+
 
 
 Child* MessageManager::findLastMessage(const QString& childName) const {

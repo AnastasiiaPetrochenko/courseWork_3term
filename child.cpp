@@ -32,6 +32,10 @@ QString Child::getSpecificGift() const {
     return specificGift;
 }
 
+void Child::setGiftType(GiftType giftType) {
+    this->giftType = giftType;
+}
+
 
 // У класі Child
 void Child::setSpecificGift(const QString& giftName) {

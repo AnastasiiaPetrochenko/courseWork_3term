@@ -48,6 +48,14 @@ private slots:
 
     void on_action_triggered();
 
+    void on_addChild_clicked();
+
+    void on_removeChild_clicked();
+
+    void on_youngChild_clicked();
+
+    void on_countChild_clicked();
+
 private:
     Ui::MainWindow *ui;         // Інтерфейс головного вікна
     MessageManager messageManager; // Об'єкт MessageManager для управління повідомленнями

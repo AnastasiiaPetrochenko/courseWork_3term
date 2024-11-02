@@ -11,70 +11,150 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Головна сторінка</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(255, 249, 166);</string>
+   <string notr="true">background-color: rgb(255, 251, 137);</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QVBoxLayout" name="verticalLayout">
-    <item>
-     <widget class="QPushButton" name="pushButton">
-      <property name="styleSheet">
-       <string notr="true">font: 700 15pt &quot;Consolas&quot;;
-color: rgb(0, 22, 74);
-background-color: rgb(170, 152, 49);</string>
-      </property>
-      <property name="text">
-       <string>Load</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QTableWidget" name="childrenTable">
-      <property name="styleSheet">
-       <string notr="true">font: 700 12pt &quot;Consolas&quot;;
-color: rgb(0, 22, 74);
-background-color: rgb(170, 152, 49);</string>
-      </property>
-      <column>
-       <property name="text">
-        <string>Ім'я</string>
+   <widget class="QTableWidget" name="childrenTable">
+    <property name="geometry">
+     <rect>
+      <x>11</x>
+      <y>56</y>
+      <width>901</width>
+      <height>391</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 700 12pt &quot;Consolas&quot;;
+color: rgb(0, 85, 0);
+background-color: rgb(135, 255, 126);</string>
+    </property>
+    <column>
+     <property name="text">
+      <string>Ім'я</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Вік</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Стать</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Хороші</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Погані</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Тип</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Конкретний </string>
+     </property>
+    </column>
+   </widget>
+   <widget class="QWidget" name="horizontalLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>901</width>
+      <height>34</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QPushButton" name="pushButton">
+       <property name="styleSheet">
+        <string notr="true">font: 700 12pt &quot;Consolas&quot;;
+color: rgb(115, 0, 2);
+background-color:rgb(255, 255, 255)</string>
        </property>
-      </column>
-      <column>
        <property name="text">
-        <string>Вік</string>
+        <string>Зчитати з файлу</string>
        </property>
-      </column>
-      <column>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="addChild">
+       <property name="styleSheet">
+        <string notr="true">font: 700 12pt &quot;Consolas&quot;;
+color: rgb(115, 0, 2);
+background-color:rgb(255, 255, 255)</string>
+       </property>
        <property name="text">
-        <string>Стать</string>
+        <string>Додати повідомлення</string>
        </property>
-      </column>
-      <column>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="removeChild">
+       <property name="styleSheet">
+        <string notr="true">font: 700 12pt &quot;Consolas&quot;;
+color: rgb(115, 0, 2);
+border-color: rgb(115, 0, 2);
+background-color:rgb(255, 255, 255)</string>
+       </property>
        <property name="text">
-        <string>Хороші</string>
+        <string>Видалити повідомлення</string>
        </property>
-      </column>
-      <column>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="horizontalLayoutWidget_2">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>450</y>
+      <width>901</width>
+      <height>80</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <widget class="QPushButton" name="youngChild">
+       <property name="styleSheet">
+        <string notr="true">font: 700 12pt &quot;Consolas&quot;;
+color: rgb(255, 255, 255);
+background-color: rgb(115, 0, 2);
+</string>
+       </property>
        <property name="text">
-        <string>Погані</string>
+        <string>Наймолодші діти</string>
        </property>
-      </column>
-      <column>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="countChild">
+       <property name="styleSheet">
+        <string notr="true">font: 700 12pt &quot;Consolas&quot;;
+color: rgb(255, 255, 255);
+background-color: rgb(115, 0, 2);
+
+</string>
+       </property>
        <property name="text">
-        <string>Тип</string>
+        <string>Підрахунок подарунків</string>
        </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Конкретний </string>
-       </property>
-      </column>
-     </widget>
-    </item>
-   </layout>
+      </widget>
+     </item>
+    </layout>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -128,7 +208,7 @@ background-color: rgb(170, 152, 49);</string>
   </action>
   <action name="action_4">
    <property name="text">
-    <string>Переглянути повідомлення</string>
+    <string>Підрахунок подарунків</string>
    </property>
   </action>
   <action name="action_5">

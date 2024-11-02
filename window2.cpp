@@ -31,53 +31,71 @@ void Window2::showGiftSuggestion(Child::Gender gender)
 
 void Window2::on_pushButton_clicked()
 {
-    // Отримання введених даних
-    QString name = ui->lineEdit->text();
-    int age = ui->spinBox->value();
-    Child::Gender gender = selectedGender;
-    int goodDeeds = ui->spinBox_2->value();
-    int badDeeds = ui->spinBox_3->value();
+    try {
+        // Отримання введених даних
+        QString name = ui->lineEdit->text().trimmed();
 
-    // Визначення типу подарунка (їстівний чи неїстівний)
-    Child::GiftType giftType;
-    if (ui->comboBox->currentIndex() == 0) { // Їстівний
-        giftType = Child::GiftType::Edible;
-    } else { // Неїстівний
-        giftType = Child::GiftType::NonEdible;
+        // Перевірка на порожнє поле або некоректні символи
+        if (name.isEmpty()) {
+            throw std::invalid_argument("Поле імені не може бути порожнім. Будь ласка, введіть ім'я дитини.");
+        }
+        if (!name.contains(QRegularExpression("^[A-Za-zА-Яа-яІіЇїЄє]+$"))) {
+            throw std::invalid_argument("Поле імені містить недопустимі символи. Використовуйте лише літери.");
+        }
 
-        // Викликаємо рекомендацію подарунка для неїстівного подарунка
-        showGiftSuggestion(gender);
+        // Отримання віку, кількості добрих і поганих вчинків
+        int age = ui->spinBox->value();
+        int goodDeeds = ui->spinBox_2->value();
+        int badDeeds = ui->spinBox_3->value();
+
+        // Якщо вік некоректний (наприклад, менше 1 року або занадто великий)
+        if (age <= 0 || age > 18) {
+            throw std::out_of_range("Вік має бути в межах від 1 до 18 років.");
+        }
+
+        // Інші перевірки
+        Child::Gender gender = selectedGender;
+
+        // Визначення типу подарунка (їстівний чи неїстівний)
+        Child::GiftType giftType;
+        if (ui->comboBox->currentIndex() == 0) {
+            giftType = Child::GiftType::Edible;
+        } else {
+            giftType = Child::GiftType::NonEdible;
+            showGiftSuggestion(gender);
+        }
+
+        // Створення нового об'єкту Child
+        Child newChild(name, age, gender, goodDeeds, badDeeds, giftType, "");
+
+        // Додаткові операції, пов'язані з подарунком
+        int edibleGiftIndex = -1;
+        if (giftType == Child::GiftType::Edible) {
+            edibleGiftIndex = ui->comboBox_3->currentIndex();
+        }
+
+        Gift gift(&newChild, edibleGiftIndex);
+        QString giftName = gift.getGiftName();
+        newChild.setSpecificGift(giftName);
+
+        emit childAdded(newChild);
+
+        // Очищення полів після додавання
+        ui->lineEdit->clear();
+        ui->spinBox->setValue(10);
+        ui->spinBox_2->setValue(0);
+        ui->spinBox_3->setValue(0);
+        ui->comboBox->setCurrentIndex(0);
+        ui->comboBox_2->setCurrentIndex(0);
+        ui->comboBox_3->hide();
+
+    } catch (const std::invalid_argument& e) {
+        QMessageBox::warning(this, "Помилка", e.what());
+    } catch (const std::out_of_range& e) {
+        QMessageBox::warning(this, "Помилка", e.what());
+    } catch (...) {
+        QMessageBox::warning(this, "Невідома помилка", "Виникла невідома помилка.");
     }
-
-    // Створення нового об'єкту Child
-    Child newChild(name, age, gender, goodDeeds, badDeeds, giftType, ""); // Ініціалізація без конкретного подарунка
-
-    // Визначаємо індекс для їстівного подарунка
-    int edibleGiftIndex = -1;  // Ініціалізація як -1 для випадку неїстівного подарунка
-    if (giftType == Child::GiftType::Edible) {
-        edibleGiftIndex = ui->comboBox_3->currentIndex();  // Отримуємо індекс з comboBox_3
-    }
-
-    // Створення об'єкта Gift з передачею індексу їстівного подарунка
-    Gift gift(&newChild, edibleGiftIndex);  // Передаємо вказівник на дитину та індекс їстівного подарунка
-
-    // Отримання назви подарунка
-    QString giftName = gift.getGiftName();
-
-    // Оновлення конкретного подарунка для нової дитини
-    newChild.setSpecificGift(giftName);
-
-    // Виклик сигналу з переданими даними
-    emit childAdded(newChild);
-
-    // Очищення полів після додавання
-    ui->lineEdit->clear();
-    ui->spinBox->setValue(10);
-    ui->spinBox_2->setValue(0);
-    ui->spinBox_3->setValue(0);
-    ui->comboBox->setCurrentIndex(0);
-    ui->comboBox_2->setCurrentIndex(0);
-    ui->comboBox_3->hide(); // Сховати comboBox_3 після додавання
 }
 
 
@@ -113,8 +131,6 @@ void Window2::on_comboBox_activated(int index)
     }
     else if (index == 1) { // Неїстівний
         ui->comboBox_3->hide(); // Сховати comboBox_3
-        // Викликаємо рекомендацію для неїстівного подарунка
-        showGiftSuggestion(selectedGender);
     }
 }
 

@@ -33,6 +33,8 @@ public:
 
 
     void setSpecificGift(const QString& specificGift);
+    void setGiftType(GiftType giftType); // Новий метод
+
 
     bool deservesSwitch() const;
 

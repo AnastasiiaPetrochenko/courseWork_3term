@@ -18,6 +18,8 @@ public:
 private slots:
     void on_pushButton_2_clicked();
 
+    void on_pushButton_clicked();
+
 private:
     Ui::Window5 *ui;
     MessageManager *messageManager; // Додайте поле для MessageManager

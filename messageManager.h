@@ -1,14 +1,17 @@
 #ifndef MESSAGEMANAGER_H
 #define MESSAGEMANAGER_H
 
-#include <QVector>
 #include <QString>
 #include "child.h"
 #include "gift.h"
 #include <QSet>
 
+#include <QVector>
+#include <QTableWidget>
+
 class MessageManager {
 public:
+
     // Додає нове повідомлення (дитину) до менеджера
     void addMessage(Child* child);
 
@@ -26,6 +29,8 @@ public:
 
     // Підраховує кількість конкретного типу подарунка (лялька, машинка, цукерки, шоколад тощо)
     int countGiftType(Child::GiftType giftType) const;
+
+    int countSwitch() const ;
 
     void clearMessages();
     // Підраховує кількість цукерок
@@ -46,8 +51,8 @@ public:
     // Генерує подарунки на основі унікальних повідомлень дітей
     QVector<Gift*> generateGifts();
 
-    // Знаходить наймолодших дітей
-    QVector<Child*> findYoungestChildren() const;
+    QVector<Child*> findYoungestChildrenFromTable(QTableWidget* table);
+
 
     // Повертає останнє повідомлення для конкретної дитини за її ім'ям
     Child* findLastMessage(const QString& childName) const;

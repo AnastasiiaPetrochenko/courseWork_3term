@@ -19,7 +19,8 @@ void Gift::determineGift() {
     // Якщо дитина заслуговує на різку
     if (child->deservesSwitch()) {
         giftName = "Різочка";
-        qDebug() << "Gift determined as: Різочка";
+        child->setGiftType(Child::GiftType::NonEdible); // Встановлюємо різку як неїстівний подарунок
+        qDebug() << "Gift determined as: Різочка (неїстівний)";
         return;
     }
 
@@ -57,6 +58,7 @@ void Gift::determineGift() {
 
     qDebug() << "Gift determined as:" << giftName;
 }
+
 
 
 QString Gift::getGiftName() const {

@@ -2,11 +2,13 @@
 #include "ui_window6.h"
 
 
-Window6::Window6(QWidget *parent)
+Window6::Window6(MessageManager* manager, QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::Window6)
 {
     ui->setupUi(this);
+    //connect(ui->pushButton, &QPushButton::clicked, this, &window6::onPushButtonClicked);
+
 }
 
 Window6::~Window6()
@@ -14,21 +16,28 @@ Window6::~Window6()
     delete ui;
 }
 
-void Window6::on_pushButton_clicked(const QVector<Child*>& youngestChildren)
+
+void Window6::on_pushButton_clicked()
 {
-    ui->youngestChildrenTable->setRowCount(0); // Очищаємо таблицю
+    // Очищаємо таблицю перед виводом нових даних
+    ui->youngestChildrenTable->setRowCount(0);
 
-    for (const Child* child : children) {
-        int row = ui->youngestChildrenTable->rowCount();
-        ui->youngestChildrenTable->insertRow(row);
+    // Отримуємо наймолодших дітей за допомогою MessageManager
+    QVector<Child*> youngestChildren = messageManager->findYoungestChildrenFromTable(
+        parent()->findChild<QTableWidget*>("childrenTable")
+        );
 
-        ui->youngestChildrenTable->setItem(row, 0, new QTableWidgetItem(child->getName()));
-        ui->youngestChildrenTable->setItem(row, 1, new QTableWidgetItem(QString::number(child->getAge())));
-        ui->youngestChildrenTable->setItem(row, 2, new QTableWidgetItem(child->getGender() == Child::Gender::Male ? "Хлопець" : "Дівчина"));
-        ui->youngestChildrenTable->setItem(row, 3, new QTableWidgetItem(QString::number(child->getGoodDeeds())));
-        ui->youngestChildrenTable->setItem(row, 4, new QTableWidgetItem(QString::number(child->getBadDeeds())));
-        ui->youngestChildrenTable->setItem(row, 5, new QTableWidgetItem(child->getGiftType() == Child::GiftType::Edible ? "Їстівний" : "Неїстівний"));
-        ui->youngestChildrenTable->setItem(row, 6, new QTableWidgetItem(child->getSpecificGift()));
+    // Додаємо дані у таблицю youngestChildrenTable
+    for (int i = 0; i < youngestChildren.size(); ++i) {
+        Child* child = youngestChildren[i];
+        ui->youngestChildrenTable->insertRow(i);
+
+        ui->youngestChildrenTable->setItem(i, 0, new QTableWidgetItem(child->getName()));
+        ui->youngestChildrenTable->setItem(i, 1, new QTableWidgetItem(QString::number(child->getAge())));
+        ui->youngestChildrenTable->setItem(i, 2, new QTableWidgetItem(child->getSpecificGift()));
     }
+
+    // Очищуємо вектор для уникнення витоків пам'яті
+    qDeleteAll(youngestChildren);
 }
 

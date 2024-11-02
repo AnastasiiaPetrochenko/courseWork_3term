@@ -21,9 +21,10 @@ void Window5::on_pushButton_2_clicked() {
     int dollCount = messageManager->countDoll();
     int edibleCount = messageManager->countEdibleGifts();
     int nonEdibleCount = messageManager->countNonEdibleGifts();
+    int switchCount = messageManager->countSwitch();
 
     // Очищаємо таблицю для результатів
-    ui->tableWidget->setRowCount(7); // Додаємо два рядки для їстівних і неїстівних подарунків
+    ui->tableWidget->setRowCount(8); // Додаємо рядок для "Різочок"
 
     // Додаємо кількість їстівних подарунків
     ui->tableWidget->setItem(0, 0, new QTableWidgetItem("Їстівні подарунки"));
@@ -52,5 +53,16 @@ void Window5::on_pushButton_2_clicked() {
     // Додаємо кількість ляльок
     ui->tableWidget->setItem(6, 0, new QTableWidgetItem("Ляльки"));
     ui->tableWidget->setItem(6, 1, new QTableWidgetItem(QString::number(dollCount)));
+
+    // Додаємо кількість "Різочок"
+    ui->tableWidget->setItem(7, 0, new QTableWidgetItem("Різочка"));
+    ui->tableWidget->setItem(7, 1, new QTableWidgetItem(QString::number(switchCount)));
+}
+
+
+
+void Window5::on_pushButton_clicked()
+{
+    this->close();
 }
 

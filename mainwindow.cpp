@@ -3,6 +3,8 @@
 #include "messageManager.h"
 #include <QFile>
 #include <QIODevice>
+#include <QFileDialog>
+
 #include <QTextStream>
 #include "window2.h"
 #include "window3.h"
@@ -27,7 +29,6 @@ MainWindow::MainWindow(QWidget *parent)
     connect(window2, &Window2::childAdded, this, &MainWindow::addChildToTable);
     connect(window3, &Window3::childRemoved, this, &MainWindow::onChildRemoved);
 
-    loadChildrenFromFile();
 }
 
 MainWindow::~MainWindow()
@@ -44,9 +45,16 @@ void MainWindow::loadChildrenFromFile()
 {
     messageManager.clearMessages();  // Очищаємо список повідомлень перед завантаженням даних
 
-    QFile file("C:/Users/Admin/Desktop/CourseWok/children.txt");
+    // Відкриваємо діалогове вікно для вибору файлу
+    QString fileName = QFileDialog::getOpenFileName(this, tr("Open Children File"), "", tr("Text Files (*.txt);;All Files (*)"));
+
+    if (fileName.isEmpty()) {
+        return; // Якщо користувач скасував, нічого не робимо
+    }
+
+    QFile file(fileName);
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
-        return;
+        return; // Помилка відкриття файлу
     }
 
     QTextStream in(&file);
@@ -57,7 +65,7 @@ void MainWindow::loadChildrenFromFile()
         QStringList childData = line.split(" ");
 
         if (childData.size() < 7) {
-            continue;
+            continue; // Пропускаємо, якщо недостатньо даних
         }
 
         // Витягуємо дані для дитини
@@ -89,7 +97,6 @@ void MainWindow::loadChildrenFromFile()
 
     file.close();
 }
-
 
 
 void MainWindow::addChildToTable(const Child& child)
@@ -225,9 +232,52 @@ void MainWindow::on_pushButton_clicked()
 
 void MainWindow::on_action_triggered()
 {
-    if(!window6){
-        window6=new Window6(this);
+    if (!window6) {
+        window6 = new Window6(&messageManager, this);
     }
+
+    window6->show();
+}
+
+
+
+void MainWindow::on_addChild_clicked()
+{
+    if (!window2) {
+        window2 = new Window2(this);
+        connect(window2, &Window2::childAdded, this, &MainWindow::addChildToTable);
+    }
+    window2->show();
+}
+
+
+void MainWindow::on_removeChild_clicked()
+{
+    if (!window3) {
+        // Передаємо об'єкт messageManager
+        window3 = new Window3(&messageManager, this);
+        connect(window3, &Window3::childRemoved, this, &MainWindow::onChildRemoved);
+    }
+    window3->show();
+}
+
+
+void MainWindow::on_youngChild_clicked()
+{
+    if (!window6) {
+        window6 = new Window6(&messageManager, this);
+    }
+
+    window6->show();
+}
+
+
+void MainWindow::on_countChild_clicked()
+{
+    if (!window6) {
+        window6 = new Window6(&messageManager, this);
+    }
+
     window6->show();
 }
 
