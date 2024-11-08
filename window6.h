@@ -16,9 +16,6 @@ public:
     explicit Window6(MessageManager* manager, QWidget *parent = nullptr);
     ~Window6();
 
-public:
-   // void displayYoungestChildren(const QVector<Child*>& youngestChildren);
-
 
 private slots:
 

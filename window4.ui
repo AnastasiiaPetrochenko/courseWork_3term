@@ -16,8 +16,7 @@
   <property name="styleSheet">
    <string notr="true">font: 700 18pt &quot;Consolas&quot;;
 color: rgb(0, 22, 74);
-
-background-color: rgb(255, 249, 166);</string>
+background-color: rgb(255, 251, 137);</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_4">
    <item>
@@ -39,7 +38,7 @@ background-color: rgb(255, 249, 166);</string>
           <x>0</x>
           <y>30</y>
           <width>407</width>
-          <height>88</height>
+          <height>81</height>
          </rect>
         </property>
         <property name="styleSheet">
@@ -58,18 +57,18 @@ color: rgb(0, 0, 0);</string>
        <property name="styleSheet">
         <string notr="true">color: rgb(0, 0, 0);
 font: 700 italic 12pt &quot;Consolas&quot;;
-background-color: rgb(170, 152, 49);</string>
+background-color: rgb(135, 255, 126);</string>
        </property>
        <property name="text">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Це програма для організації&lt;/p&gt;&lt;p align=&quot;center&quot;&gt; свята Миколая.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:400; font-style:normal;&quot;&gt;Це програма для організації&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:400; font-style:normal;&quot;&gt;свята Миколая.&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:400; font-style:normal;&quot;&gt;Якщо виникли труднощі, звертайтесь &lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:400; font-style:normal;&quot;&gt;за телефоном : +380XXXXXXX&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QPushButton" name="pushButton">
        <property name="styleSheet">
-        <string notr="true">color: rgb(170, 0, 0);
-background-color: rgb(170, 152, 49);
+        <string notr="true">background-color: rgb(115, 0, 2);
+color: rgb(255, 255, 255);
 font: 700 14pt &quot;Consolas&quot;;</string>
        </property>
        <property name="text">

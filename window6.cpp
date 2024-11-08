@@ -7,8 +7,6 @@ Window6::Window6(MessageManager* manager, QWidget *parent)
     , ui(new Ui::Window6)
 {
     ui->setupUi(this);
-    //connect(ui->pushButton, &QPushButton::clicked, this, &window6::onPushButtonClicked);
-
 }
 
 Window6::~Window6()

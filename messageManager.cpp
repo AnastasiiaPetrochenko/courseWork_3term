@@ -36,6 +36,7 @@ QVector<Child*> MessageManager::getUniqueMessages() const {
     return uniqueMessages;
 }
 
+//підрахунок подарунок - різочка
 int MessageManager::countSwitch() const {
     int count = 0;
     for (Child* child : messages) {
@@ -46,7 +47,7 @@ int MessageManager::countSwitch() const {
     return count;
 }
 
-
+//підрахунок подарунку - цукерки
 int MessageManager::countCandy() const {
     int count = 0;
     for (Child* child : messages) {
@@ -57,7 +58,7 @@ int MessageManager::countCandy() const {
     return count;
 }
 
-
+//підрахунки подарунку - шоколад
 int MessageManager::countChocolate() const {
     int count = 0;
     for (Child* child : messages) {
@@ -68,6 +69,7 @@ int MessageManager::countChocolate() const {
     return count;
 }
 
+//підрахунок подарунку - печиво
 int MessageManager::countCookie() const {
     int count = 0;
     for (Child* child : messages) {
@@ -78,6 +80,7 @@ int MessageManager::countCookie() const {
     return count;
 }
 
+//підрахунок подарунку - машинка
 int MessageManager::countCar() const {
     int count = 0;
     for (Child* child : messages) {
@@ -88,6 +91,7 @@ int MessageManager::countCar() const {
     return count;
 }
 
+//підрахунок подарунку - лялька
 int MessageManager::countDoll() const {
     int count = 0;
     for (Child* child : messages) {
@@ -107,6 +111,7 @@ QVector<Gift*> MessageManager::generateGifts() {
     return gifts;
 }
 
+//підрахунок загальної кількості їстівних подарунків
 int MessageManager::countEdibleGifts() const {
     int count = 0;
     for (Child* child : messages) {
@@ -118,7 +123,7 @@ int MessageManager::countEdibleGifts() const {
 }
 
 
-
+//підрахунок загальної кількості неїстівних подарунків
 int MessageManager::countNonEdibleGifts() const {
     int count = 0;
     for (Child* child : messages) {

@@ -10,6 +10,9 @@
 #include <QTableWidget>
 
 class MessageManager {
+
+private:
+    QVector<Child*> messages;  // Список повідомлень (дітей)
 public:
 
     // Додає нове повідомлення (дитину) до менеджера
@@ -57,8 +60,7 @@ public:
     // Повертає останнє повідомлення для конкретної дитини за її ім'ям
     Child* findLastMessage(const QString& childName) const;
 
-private:
-    QVector<Child*> messages;  // Список повідомлень (дітей)
+
 };
 
 #endif // MESSAGEMANAGER_H

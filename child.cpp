@@ -37,7 +37,6 @@ void Child::setGiftType(GiftType giftType) {
 }
 
 
-// У класі Child
 void Child::setSpecificGift(const QString& giftName) {
     specificGift = giftName;
 }

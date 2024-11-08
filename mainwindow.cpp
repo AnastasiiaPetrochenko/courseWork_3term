@@ -4,7 +4,7 @@
 #include <QFile>
 #include <QIODevice>
 #include <QFileDialog>
-
+#include <QMessageBox>>
 #include <QTextStream>
 #include "window2.h"
 #include "window3.h"
@@ -46,7 +46,7 @@ void MainWindow::loadChildrenFromFile()
     messageManager.clearMessages();  // Очищаємо список повідомлень перед завантаженням даних
 
     // Відкриваємо діалогове вікно для вибору файлу
-    QString fileName = QFileDialog::getOpenFileName(this, tr("Open Children File"), "", tr("Text Files (*.txt);;All Files (*)"));
+    QString fileName = QFileDialog::getOpenFileName(this, tr("Відкриття файлу"), "", tr("Text Files (*.txt);;All Files (*)"));
 
     if (fileName.isEmpty()) {
         return; // Якщо користувач скасував, нічого не робимо
@@ -57,42 +57,51 @@ void MainWindow::loadChildrenFromFile()
         return; // Помилка відкриття файлу
     }
 
-    QTextStream in(&file);
-    ui->childrenTable->setRowCount(0);  // Очищаємо таблицю перед завантаженням даних
-
-    while (!in.atEnd()) {
-        QString line = in.readLine();
-        QStringList childData = line.split(" ");
-
-        if (childData.size() < 7) {
-            continue; // Пропускаємо, якщо недостатньо даних
+    try {
+        // Перевіряємо, чи файл порожній
+        if (file.size() == 0) {
+            throw std::runtime_error("Поточний файл порожній.");
         }
 
-        // Витягуємо дані для дитини
-        QString name = childData[0];
-        int age = childData[1].toInt();
-        QString genderStr = childData[2];
-        int goodDeeds = childData[3].toInt();
-        int badDeeds = childData[4].toInt();
-        QString giftTypeStr = childData[5];
-        QString specificGift = childData[6];
+        QTextStream in(&file);
+        ui->childrenTable->setRowCount(0);  // Очищаємо таблицю перед завантаженням даних
 
-        Child::Gender gender = (genderStr == "Хлопець") ? Child::Gender::Male : Child::Gender::Female;
-        Child::GiftType giftType = (giftTypeStr == "Їстівний") ? Child::GiftType::Edible : Child::GiftType::NonEdible;
+        while (!in.atEnd()) {
+            QString line = in.readLine();
+            QStringList childData = line.split(" ");
 
-        Child* child = new Child(name, age, gender, goodDeeds, badDeeds, giftType, specificGift);
-        messageManager.addMessage(child);  // Додаємо в MessageManager
+            if (childData.size() < 7) {
+                continue; // Пропускаємо, якщо недостатньо даних
+            }
 
-        int rowCount = ui->childrenTable->rowCount();
-        ui->childrenTable->insertRow(rowCount);
+            // Витягуємо дані для дитини
+            QString name = childData[0];
+            int age = childData[1].toInt();
+            QString genderStr = childData[2];
+            int goodDeeds = childData[3].toInt();
+            int badDeeds = childData[4].toInt();
+            QString giftTypeStr = childData[5];
+            QString specificGift = childData[6];
 
-        ui->childrenTable->setItem(rowCount, 0, new QTableWidgetItem(name));
-        ui->childrenTable->setItem(rowCount, 1, new QTableWidgetItem(QString::number(age)));
-        ui->childrenTable->setItem(rowCount, 2, new QTableWidgetItem(genderStr));
-        ui->childrenTable->setItem(rowCount, 3, new QTableWidgetItem(QString::number(goodDeeds)));
-        ui->childrenTable->setItem(rowCount, 4, new QTableWidgetItem(QString::number(badDeeds)));
-        ui->childrenTable->setItem(rowCount, 5, new QTableWidgetItem(giftTypeStr));
-        ui->childrenTable->setItem(rowCount, 6, new QTableWidgetItem(specificGift));
+            Child::Gender gender = (genderStr == "Хлопець") ? Child::Gender::Male : Child::Gender::Female;
+            Child::GiftType giftType = (giftTypeStr == "Їстівний") ? Child::GiftType::Edible : Child::GiftType::NonEdible;
+
+            Child* child = new Child(name, age, gender, goodDeeds, badDeeds, giftType, specificGift);
+            messageManager.addMessage(child);  // Додаємо в MessageManager
+
+            int rowCount = ui->childrenTable->rowCount();
+            ui->childrenTable->insertRow(rowCount);
+
+            ui->childrenTable->setItem(rowCount, 0, new QTableWidgetItem(name));
+            ui->childrenTable->setItem(rowCount, 1, new QTableWidgetItem(QString::number(age)));
+            ui->childrenTable->setItem(rowCount, 2, new QTableWidgetItem(genderStr));
+            ui->childrenTable->setItem(rowCount, 3, new QTableWidgetItem(QString::number(goodDeeds)));
+            ui->childrenTable->setItem(rowCount, 4, new QTableWidgetItem(QString::number(badDeeds)));
+            ui->childrenTable->setItem(rowCount, 5, new QTableWidgetItem(giftTypeStr));
+            ui->childrenTable->setItem(rowCount, 6, new QTableWidgetItem(specificGift));
+        }
+    } catch (const std::runtime_error& e) {
+        QMessageBox::warning(this, tr("Увага"), tr(e.what())); // Показуємо повідомлення про помилку
     }
 
     file.close();
@@ -274,10 +283,9 @@ void MainWindow::on_youngChild_clicked()
 
 void MainWindow::on_countChild_clicked()
 {
-    if (!window6) {
-        window6 = new Window6(&messageManager, this);
+    if (!window5) {
+        window5 = new Window5(&messageManager, this); // Передайте messageManager
     }
-
-    window6->show();
+    window5->show();
 }
 
